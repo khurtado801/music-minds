@@ -85,58 +85,74 @@ class Search extends Component {
         
         /**
          * GET request to LastFM API:
-         * Query by track name returns artist name
+         * Query by track name returns artist name and album name
          */
         axios.get(`http://ws.audioscrobbler.com/2.0/?method=track.search&track=${userInput}&limit=10&api_key=5d6a4c2be0bcb377567ac2c3edd9f472&format=json`)
             .then((res) => {
-                let lastFmTracksRes = res.data.results.trackmatches.track;
-                this.data = res.data.results.trackmatches.track;
-                this.data.forEach((item) => {
-                    item.type = 'track';
+                let lastFmTracksRes = res.data.results.trackmatches.track; // Declare variable and set to response of array of track objects
+                this.data = res.data.results.trackmatches.track; // Set this instance of data to array of track objects from response
+                this.data.forEach((item) => { // For each track object item
+                    item.type = 'track'; // add property named type and set value to track
                 });
                 this.setState({
-                    lastFmTracks: lastFmTracksRes
+                    lastFmTracks: lastFmTracksRes // Set array state to array of track objects from response
                 });
                 this.clearInputs(); // clear input fields
             })
             .catch((err) => console.error('Err5: ', err));
     };
 
+    /**
+     * Method to clear user input from input field
+     */
     clearInputs = () => {
-        this.setState({
-            userInput: ''
+        this.setState({ // Set state on this instance 
+            userInput: '' // of variable to empty string
         });
     };
 
+    /**
+     * Method to clear previous state of userInput
+     * and set to current target of the value of
+     * userInput
+     */
     handleChange = (e) => {
-        let { value } = e.target;
-        this.setState((prevState) => {
-            return { userInput: value };
+        let { value } = e.target; // Set variable to current value of event target
+        this.setState(() => {
+            /**
+             * Clear previous state of arrays, then state of userInput to current value, return value of userInput for GET request
+             */
+            return {  audioDbAlbums: [], lastFmAlbums: [], lastFmTracks: [], lastFmArtist: [], userInput: value };
         });
     };
 
     render() {
-        let { userInput, bioResults, lastFmArtistImg, audioDbAlbums, lastFmAlbums, lastFmTracks } = this.state;
+        let { userInput, bioResults, lastFmArtistImg, audioDbAlbums, lastFmAlbums, lastFmTracks } = this.state; // Destruct state
         return (
             <div className="component-wrapper">
                 <h2>Start Your Search For Some Tasty Tunes</h2>
-                <form onSubmit={this.getRequest}>
+                {/* Form for submitting query */}
+                {/* On form submit call getRequest method to initiate GET requests to APIs */}
+                <form onSubmit={this.getRequest}> 
                     <fieldset>
                         <label>
+                            {/* On change of form input call handleChange method to set the current state of the event target value userInput */}
                             <input onChange={this.handleChange} value={userInput} name="artist" type="text" />
                             <button type="submit">Search</button>
                         </label>
                     </fieldset>
                 </form>
                 <div>
-                    <img src={lastFmArtistImg} alt="" />
-                    <p>{bioResults}</p>
+                    <img src={lastFmArtistImg} alt="" /> {/* Render artist image from API GET request */}
+                    <p>{bioResults}</p> {/* Render artist bio from API GET request */}
                     <div>
+                        {/* Response from theaudiodb GET request: Map through each album object one at a time and then return results to SearchList  */}
                         {audioDbAlbums.map((audioDbAlbum, i) => {
                             return <SearchList key={i} {...audioDbAlbum}></SearchList>;
                         })}
                     </div>
                     <div>
+                    {   /* Response from LastFM GET request: Map through each album object one at a time and then return results to SearchList  */}
                         {lastFmAlbums.map((lastFmAlbum, i) => {
                             return <SearchList key={i} {...lastFmAlbum}></SearchList>;
                         })}

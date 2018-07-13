@@ -45,7 +45,7 @@ class Search extends Component {
                 let audioDbAlbumsRes = res.data.album; // Declare variable and set to response of array of album objects
                 this.data = res.data.album;
                 this.data.forEach((item) => { // For each album object item
-                    item.type = 'album';      // add property named type and set value to album
+                    item.type = 'album'; // add property named type and set value to album
                 });
                 this.setState({
                     audioDbAlbums: audioDbAlbumsRes // Set array state to array of album objects from response
@@ -63,7 +63,7 @@ class Search extends Component {
                 let lastFmAlbumsRes = res.data.topalbums.album; // Declare variable and set to response of array of album objects
                 this.data = res.data.topalbums.album; // Set this instance of data to array of album objects from response
                 this.data.forEach((item) => { // For each album object item
-                    item.type = 'album';      // add property named type and set value to album
+                    item.type = 'album'; // add property named type and set value to album
                 });
                 this.setState({
                     lastFmAlbums: lastFmAlbumsRes // Set array state to array of album objects from response
@@ -71,7 +71,6 @@ class Search extends Component {
                 this.clearInputs(); // clear input fields
             })
             .catch((err) => console.error('Err2: ', err));
-
 
         
         /**
@@ -99,8 +98,8 @@ class Search extends Component {
          */
         axios.get(`https://api.songkick.com/api/3.0/search/artists.json?apikey=EasSil2s2rpezUZr&query=${userInput}&page=1`)
             .then((res) => {
-                console.log('SongKick Artist ID :', res.data.resultsPage.results.artist[0].id)
-                console.log('SongKick On Tour Status :', res.data.resultsPage.results.artist[0].onTourUntil)
+                console.log('SongKick Artist ID :', res.data.resultsPage.results.artist[0].id);
+                console.log('SongKick On Tour Status :', res.data.resultsPage.results.artist[0].onTourUntil);
             })
             .catch((err) => console.error('Err3: ', err));
     };
@@ -109,7 +108,7 @@ class Search extends Component {
      * Method to clear user input from input field
      */
     clearInputs = () => {
-        this.setState({ // Set state on this instance 
+        this.setState({ // Set state on this instance
             userInput: '' // of variable to empty string
         });
     };
@@ -125,18 +124,22 @@ class Search extends Component {
             /**
              * Clear previous state of arrays, then state of userInput to current value, return value of userInput for GET request
              */
-            return {  audioDbAlbums: [], lastFmAlbums: [], lastFmTracks: [], lastFmArtist: [], userInput: value };
+            return {
+                audioDbAlbums: [], lastFmAlbums: [], lastFmTracks: [], lastFmArtist: [], userInput: value
+            };
         });
     };
 
     render() {
-        let { userInput, bioResults, lastFmArtistImg, audioDbAlbums, lastFmAlbums, lastFmTracks } = this.state; // Destruct state
+        let {
+            userInput, bioResults, lastFmArtistImg, audioDbAlbums, lastFmAlbums, lastFmTracks
+        } = this.state; // Destruct state
         return (
             <div className="component-wrapper">
                 <h2>Start Your Search For Some Tasty Tunes</h2>
                 {/* Form for submitting query */}
                 {/* On form submit call getRequest method to initiate GET requests to APIs */}
-                <form onSubmit={this.getRequest}> 
+                <form onSubmit={this.getRequest}>
                     <fieldset>
                         <label>
                             {/* On change of form input call handleChange method to set the current state of the event target value userInput */}
@@ -155,13 +158,13 @@ class Search extends Component {
                         })}
                     </div>
                     <div>
-                    {   /* Response from LastFM GET request: Map through each album object one at a time and then return results to SearchList  */}
+                    { /* Response from LastFM GET request: Map through each album object one at a time and then return results to SearchList  */}
                         {lastFmAlbums.map((lastFmAlbum, i) => {
                             return <SearchList key={i} {...lastFmAlbum}></SearchList>;
                         })}
                     </div>
                     <div>
-                    {   /* Response from LastFM GET request: Map through each track object one at a time and then return results to SearchList  */}
+                    { /* Response from LastFM GET request: Map through each track object one at a time and then return results to SearchList  */}
                         {lastFmTracks.map((lastFmTrack, i) => {
                             return <SearchList key={i} {...lastFmTrack}></SearchList>;
                         })}

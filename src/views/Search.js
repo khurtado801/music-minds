@@ -72,16 +72,7 @@ class Search extends Component {
             })
             .catch((err) => console.error('Err2: ', err));
 
-        // Search results from query by album name, returns album name and album image
-        axios.get(`http://ws.audioscrobbler.com/2.0/?method=album.search&album=${userInput}&api_key=5d6a4c2be0bcb377567ac2c3edd9f472&format=json`)
-            .then((res) => {
-                this.data = res.data.albummatches.album; // Set this instance of data to array of album objects from response
-                this.data.forEach((item) => { // For each album object item
-                    item.type = 'album';      // add property named type and set value to album
-                });
-                this.clearInputs(); // clear input fields
-            })
-            .catch((err) => console.error('Err3: ', err));
+
         
         /**
          * GET request to LastFM API:
@@ -100,6 +91,18 @@ class Search extends Component {
                 this.clearInputs(); // clear input fields
             })
             .catch((err) => console.error('Err5: ', err));
+
+        /**
+         * GET request to SongKick
+         * Query by artist name returns artist ID
+         * which will be needed to search for artist's upcoming event
+         */
+        axios.get(`https://api.songkick.com/api/3.0/search/artists.json?apikey=EasSil2s2rpezUZr&query=${userInput}&page=1`)
+            .then((res) => {
+                console.log('SongKick Artist ID :', res.data.resultsPage.results.artist[0].id)
+                console.log('SongKick On Tour Status :', res.data.resultsPage.results.artist[0].onTourUntil)
+            })
+            .catch((err) => console.error('Err3: ', err));
     };
 
     /**
@@ -155,6 +158,12 @@ class Search extends Component {
                     {   /* Response from LastFM GET request: Map through each album object one at a time and then return results to SearchList  */}
                         {lastFmAlbums.map((lastFmAlbum, i) => {
                             return <SearchList key={i} {...lastFmAlbum}></SearchList>;
+                        })}
+                    </div>
+                    <div>
+                    {   /* Response from LastFM GET request: Map through each track object one at a time and then return results to SearchList  */}
+                        {lastFmTracks.map((lastFmTrack, i) => {
+                            return <SearchList key={i} {...lastFmTrack}></SearchList>;
                         })}
                     </div>
                 </div>

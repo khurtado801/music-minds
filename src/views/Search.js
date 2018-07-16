@@ -149,8 +149,8 @@ class Search extends Component {
                     </fieldset>
                 </form>
                 <div>
-                    <img src={lastFmArtistImg} alt="" /> {/* Render artist image from API GET request */}
-                    <p>{bioResults}</p> {/* Render artist bio from API GET request */}
+                    <img className="bio-img" src={lastFmArtistImg} alt="" /> {/* Render artist image from API GET request */}
+                    <p className="bio-txt">{bioResults}</p> {/* Render artist bio from API GET request */}
                     <div>
                         {/* Response from theaudiodb GET request: Map through each album object one at a time and then return results to SearchList  */}
                         {audioDbAlbums.map((audioDbAlbum, i) => {

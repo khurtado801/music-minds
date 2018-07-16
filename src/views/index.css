@@ -1,5 +1,37 @@
+/* body {
+    text-align: center;
+    padding: 5%;
+    background-color: #111;
+    color: white;
+    font-family: Arial;
+  } */
+
 .component-wrapper {
     width: 100%;
     display: flex;
     flex-direction: column;
 }
+
+button {
+    color: black;
+}
+
+.bio-txt {
+    color: black;
+    width: 100%;
+    text-align: center;
+    border-radius: 5px;
+    animation-name: fade-in;
+    animation-duration: 1s;
+    font-size: 14px;
+  }
+
+  /* .bio-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    border: 3px solid white;
+    position: absolute;
+    object-fit: cover;
+    filter: brightness(90%);
+  } */

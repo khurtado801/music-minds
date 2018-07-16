@@ -14,15 +14,15 @@ module.exports = {
      * Cover for console.log
      * @returns {void}
      */
-    info(...args) {
-        console.log(...args);
+    info() {
+        console.log.apply(console, arguments);
     },
 
     /**
      * Cover for console.error
      * @returns {void}
      */
-    error(...args) {
-        console.error(...args);
+    error() {
+        console.error.apply(console, arguments);
     }
 };

@@ -5,6 +5,7 @@
   "dependencies": {
     "ajv": "^6.5.2",
     "axios": "^0.18.0",
+    "eslint-config-react-app": "^2.1.0",
     "eslint-plugin-promise": "^3.8.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",

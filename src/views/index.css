@@ -14,6 +14,9 @@
 
 button {
     color: black;
+    cursor: pointer;
+    font-style: italic;
+    padding: 1px;
 }
 
 .bio-txt {

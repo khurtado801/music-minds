@@ -17,7 +17,7 @@ function SearchList(props) {
     if (type === 'track') {
         return (
             <div className="search-item">
-                <p className="search-txt">Track Name: {name}</p>
+                <h4 className="search-txt">Track Name: {name}</h4>
                 <p className="search-artist-txt">Artist Name: {artist}</p>
             </div>
         );

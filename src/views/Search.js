@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { Component } from 'react';
 import axios from 'axios';
 import SearchList from '../components/SearchList';
@@ -7,6 +9,9 @@ class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            audioDbAlbumsLimit: 5,
+            lastFmAlbumsLimit: 5,
+            lastFmTracksLimit: 5,
             bioResults: '',
             userInput: '',
             lastFmArtistImg: '',
@@ -125,14 +130,14 @@ class Search extends Component {
              * Clear previous state of arrays, then state of userInput to current value, return value of userInput for GET request
              */
             return {
-                audioDbAlbums: [], lastFmAlbums: [], lastFmTracks: [], lastFmArtist: [], userInput: value
+                audioDbAlbumsLimit: 5, lastFmAlbumsLimit: 5, lastFmTracksLimit: 5, audioDbAlbums: [], lastFmAlbums: [], lastFmTracks: [], lastFmArtist: [], userInput: value
             };
         });
     };
 
     render() {
         let {
-            userInput, bioResults, lastFmArtistImg, audioDbAlbums, lastFmAlbums, lastFmTracks
+            userInput, bioResults, lastFmArtistImg, audioDbAlbums, lastFmAlbums, lastFmTracks, audioDbAlbumsLimit, lastFmAlbumsLimit, lastFmTracksLimit
         } = this.state; // Destruct state
         return (
             <div className="component-wrapper">
@@ -153,22 +158,25 @@ class Search extends Component {
                     <p className="bio-txt">{bioResults}</p> {/* Render artist bio from API GET request */}
                     <div>
                         {/* Response from theaudiodb GET request: Map through each album object one at a time and then return results to SearchList  */}
-                        {audioDbAlbums.map((audioDbAlbum, i) => {
+                        {audioDbAlbums.slice(0, audioDbAlbumsLimit).map((audioDbAlbum, i) => {
                             return <SearchList key={i} {...audioDbAlbum}></SearchList>;
                         })}
                     </div>
+                    <div className="more-albums-button" onClick={() => this.setState({ audioDbAlbumsLimit: this.state.audioDbAlbumsLimit + 5 })}><h4>Click here to load 5 more albums from TheAudioDB...</h4></div>
                     <div>
                     { /* Response from LastFM GET request: Map through each album object one at a time and then return results to SearchList  */}
-                        {lastFmAlbums.map((lastFmAlbum, i) => {
+                        {lastFmAlbums.slice(0, lastFmAlbumsLimit).map((lastFmAlbum, i) => {
                             return <SearchList key={i} {...lastFmAlbum}></SearchList>;
                         })}
                     </div>
+                    <div className="more-albums-button" onClick={() => this.setState({ lastFmAlbumsLimit: this.state.lastFmAlbumsLimit + 5 })}><h4>Click here to load 5 more albums from LastFM...</h4></div>
                     <div>
                     { /* Response from LastFM GET request: Map through each track object one at a time and then return results to SearchList  */}
-                        {lastFmTracks.map((lastFmTrack, i) => {
+                        {lastFmTracks.slice(0, lastFmTracksLimit).map((lastFmTrack, i) => {
                             return <SearchList key={i} {...lastFmTrack}></SearchList>;
                         })}
                     </div>
+                    <div className="more-tracks-button" onClick={() => this.setState({ lastFmTracksLimit: this.state.lastFmTracksLimit + 5 })}><h4>Click here to load 5 more tracks from LastFM...</h4></div>
                 </div>
             </div>
         );

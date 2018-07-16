@@ -6,7 +6,7 @@
     font-family: Arial;
   } */
 
-.component-wrapper {
+  .component-wrapper {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -27,6 +27,18 @@ button {
     animation-name: fade-in;
     animation-duration: 1s;
     font-size: 14px;
+  }
+
+  .more-albums-button {
+    cursor: pointer;
+    font-style: italic;
+    padding: 10px;
+  }
+
+  .more-tracks-button {
+    cursor: pointer;
+    font-style: italic;
+    padding: 10px;
   }
 
   /* .bio-img {

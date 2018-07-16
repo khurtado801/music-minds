@@ -10,5 +10,5 @@ Technologies Used:
 React,
 Axios
 
-Bootstrapped using:
+Bootstrapped:
 Using create-react-app

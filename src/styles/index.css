@@ -1,0 +1,53 @@
+body {
+  text-align: center;
+  padding: 5%;
+  background-color: #111;
+  color: black;
+  font-family: Arial;
+}
+.search-button {
+  cursor: pointer;
+  font-style: italic;
+  padding: 10px;
+}
+
+.search-item {
+  text-align: left;
+  display: inline-block;
+  padding: 10px;
+  position: relative;
+  width: 180px;
+  height: 160px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.search-txt {
+  color: black;
+  width: 150px;
+  height: 150px;
+  padding: 5px;
+  /* margin: 5px; */
+  text-align: center;
+  position: absolute;
+  border-radius: 5px;
+  border: 3px solid black;
+  animation-name: fade-in;
+  animation-duration: 1s;
+  font-size: 14px;
+}
+
+.search-artist-txt {
+  color: black;
+  width: 100%;
+  height: 100%;
+  padding-right: 70px;
+  padding-top: 70px;
+  padding-left: 20px;
+  margin: 5px;
+  text-align: center;
+  position: absolute;
+  animation-name: fade-in;
+  animation-duration: 1s;
+  font-size: 14px;
+}

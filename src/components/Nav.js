@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import React, { Component } from 'react';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import Home from '../views/Home';

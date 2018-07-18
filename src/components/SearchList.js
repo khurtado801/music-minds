@@ -1,24 +1,32 @@
 import React from 'react';
+import AlbumItem from './AlbumItem';
+import TrackItem from './TrackItem';
+
 import '../styles/index.css';
 
 function SearchList(props) {
+	console.log('props', props);
 	let {
-		strAlbum, name, artist, type 
+		strAlbum, name, artist, type, lastFmAlbumsLimit, lastFmTracksLimit
 	} = props;
     
 	if (type === 'album') {
 		return (
-			<div className="search-item">
-				<p className="search-txt">Album Name: {strAlbum ? strAlbum : name}</p>
-			</div>
+			<AlbumItem
+				strAlbum={strAlbum ? strAlbum : name}
+				lastFmAlbumsLimit={lastFmAlbumsLimit}
+			/>
 		);
 	}
 	if (type === 'track') {
 		return (
-			<div className="search-item">
-				<h4 className="search-txt">Track Name: {name}</h4>
-				<p className="search-artist-txt">Artist Name: {artist}</p>
-			</div>
+			<TrackItem
+				name={name}
+				artist={artist}
+				strAlbum={strAlbum}
+				strAlbum={name}
+				lastFmTracksLimit={lastFmTracksLimit}
+			/>
 		);
 	}
 }

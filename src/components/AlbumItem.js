@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../styles/index.css';
 
 class AlbumItem extends Component {
     
@@ -7,7 +8,7 @@ class AlbumItem extends Component {
 		return (
 			<div className="search-item">
 				<div className="search-txt">
-					<h4>Album: {strAlbum} </h4>
+					<h4>Album Name: {strAlbum} </h4>
 				</div>
 			</div>
 		);

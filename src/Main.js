@@ -8,7 +8,7 @@ import './styles/index.css';
 class Main extends Component {
 	render() {
 		return (
-			<div>
+			<div className="main-wrapper">
 				<Header />
 				<Nav />
 				<Footer />

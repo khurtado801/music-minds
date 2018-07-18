@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Form, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
+import { Form, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import axios from 'axios';
+import Button from '@material-ui/core/Button';
 import SearchList from '../components/SearchList';
-import './index.css';
+import '../styles/index.css';
 
 class Search extends Component {
     constructor(props) {
@@ -105,6 +106,18 @@ class Search extends Component {
         });
     };
 
+    clearPage = () => {
+        this.setState({ // Set state on this instance
+            userInput: '', // of variable to empty string
+            bioResults: '',
+            lastFmArtistImg: '',
+            audioDbAlbums: [],
+            lastFmAlbums: [],
+            lastFmTracks: [],
+            lastFmArtist: [],
+        });
+    }
+
     /**
      * Method to clear previous state of userInput
      * and set to current target of the value of
@@ -132,7 +145,7 @@ class Search extends Component {
             <div>
                 <Form inline onSubmit={this.getBioLastFm}>
                     <FormGroup>
-                        <ControlLabel>Search by artist name or track name</ControlLabel>
+                        <ControlLabel><h3>Search by artist name or track name</h3></ControlLabel>
                         {' '}
                         <FormControl 
                             type="text"
@@ -143,12 +156,15 @@ class Search extends Component {
                         />
                     </FormGroup>
                     {' '}
-                    <Button type="submit">Submit</Button>
+                    <Button variant="outlined" color="primary" type="submit">Submit</Button>
+                    <Button onClick={this.clearPage} variant="outlined" color="secondary" type="submit">Clear Screen</Button>
                 </Form>
 
                 <div>
-                    <img className="bio-img" src={lastFmArtistImg} alt="" /> {/* Render artist image from API GET request */}
-                    <p className="bio-txt">{bioResults}</p> {/* Render artist bio from API GET request */}
+                    <div className="bio-wrapper">
+                        <img className="bio-img" src={lastFmArtistImg} alt="" /> {/* Render artist image from API GET request */}
+                        <h4 className="bio-txt">{bioResults}</h4> {/* Render artist bio from API GET request */}
+                    </div>
                     <div>
                         { /* Response from LastFM GET request: Map through each album object one at a time and then return results to SearchList  */}
                         {lastFmAlbums.slice(0, lastFmAlbumsLimit).map((lastFmAlbum, i) => {

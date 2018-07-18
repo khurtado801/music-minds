@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^1.4.0",
     "ajv": "^6.5.2",
     "axios": "^0.18.0",
     "eslint-config-react-app": "^2.1.0",

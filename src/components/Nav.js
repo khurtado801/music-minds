@@ -3,7 +3,7 @@ import { Route, Switch, NavLink } from 'react-router-dom';
 import About from '../views/About';
 import Contact from '../views/Contact';
 import Search from '../views/Search';
-import './nav.css';
+import '../styles/nav.css';
 
 class Nav extends Component {
 	render() {
@@ -18,7 +18,7 @@ class Nav extends Component {
 				</div>
 				<div className="content">
 					<Switch>
-						<Route path="/" component={Search} />
+						<Route exact path="/Search" component={Search} />
 						<Route path="/About" component={About} />
 						<Route path="/Contact" component={Contact} />
 					</Switch>

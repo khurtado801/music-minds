@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import React, { Component } from 'react';
 
 class Contact extends Component {
@@ -7,7 +5,7 @@ class Contact extends Component {
 		return (
 			<div>
 				<h2>Got Questions?</h2>
-				<p>The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus.</p>
+				<h4>The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus.</h4>
 			</div>
 		);
 	}

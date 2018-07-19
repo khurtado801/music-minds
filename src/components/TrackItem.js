@@ -8,8 +8,8 @@ class TrackItem extends Component {
 		return (
 			<div className="search-item">
 				<div className="search-txt">
-					<h4>Album Name: {strAlbum}</h4>
 					<h4>Artist Name: {artist}</h4>
+					<h4>Album Name: {strAlbum}</h4>
 					<h4>Track Name: {name}</h4>
 				</div>
 			</div>

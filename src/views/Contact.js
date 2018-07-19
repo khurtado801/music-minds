@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
+import ContactForm from '../components/ContactForm';
 
 class Contact extends Component {
 	render() {
 		return (
 			<div>
-				<h2>Got Questions?</h2>
-				<h4>The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus.</h4>
+				<div className="contact-form-wrapper">
+					<h2>Got Questions?</h2>
+					<h3>Please enter your email address below and a confirmation email will be sent to you.</h3>
+					<div className="contact-form">
+						<ContactForm />
+					</div>
+				</div>
 			</div>
 		);
 	}

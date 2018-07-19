@@ -188,7 +188,7 @@ class Search extends Component {
                     <div>
                         {
                             this.state.lastFmTracks.length > 0 ?
-                                <h4 className="more-tracks-button" onClick={() => this.setState({ lastFmTracksLimit: this.state.lastFmTracksLimit + 5 })}>Click here to load 5 more tracks...</h4>
+                                <h4 className="more-tracks-button" onClick={() => this.setState({ lastFmTracksLimit: this.state.lastFmTracksLimit + 5 })}>Click here to load 5 more artists...</h4>
                             :
                                 <div></div>
                         }

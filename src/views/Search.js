@@ -34,7 +34,7 @@ class Search extends Component {
         axios.get(`http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=5d6a4c2be0bcb377567ac2c3edd9f472&artist=${userInput}&format=json`)
             .then((res) => {
                 this.setState({
-                    bioResults: res.data.artist.bio.summary, // Set string state to artist bio from response
+                    bioResults: res.data.artist.bio.content, // Set string state to artist bio from response
                     lastFmArtistImg: res.data.artist.image[4]['#text'] // Set state to artist image from response
                 });
                 this.getAlbumsAudioDb();

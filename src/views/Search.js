@@ -174,7 +174,7 @@ class Search extends Component {
                     <div>
                         {
                             this.state.lastFmAlbums.length > 0 ?
-                                    <h4 className="more-albums-button" onClick={() => this.setState({ lastFmAlbumsLimit: this.state.lastFmAlbumsLimit + 5 })}>Click here to load 5 more albums...</h4>
+                                <Button className="more-albums-button" variant="outlined" color="primary" onClick={() => this.setState({ lastFmAlbumsLimit: this.state.lastFmAlbumsLimit + 5 })}><h4>Load more results...</h4></Button>
                             :
                                 <div></div>
                         }
@@ -188,7 +188,7 @@ class Search extends Component {
                     <div>
                         {
                             this.state.lastFmTracks.length > 0 ?
-                                <h4 className="more-tracks-button" onClick={() => this.setState({ lastFmTracksLimit: this.state.lastFmTracksLimit + 5 })}>Click here to load 5 more artists...</h4>
+                                <Button className="more-albums-button" variant="outlined" color="primary" onClick={() => this.setState({ lastFmTracksLimit: this.state.lastFmTracksLimit + 5 })}><h4>Load more results...</h4></Button>
                             :
                                 <div></div>
                         }

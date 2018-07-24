@@ -110,3 +110,25 @@ ol, ul {
   float: left;
   margin: 10px;
 }
+
+.bio-wrapper {
+  margin: 5%;
+}
+
+.lastfm-albums {
+  margin-left: 5%;
+}
+
+.lastfm-tracks {
+  margin-left: 5%;
+}
+
+.jumbotron {
+  border: 2px solid;
+  border-radius: 10px;
+  border-color: rgb(225, 228, 232)
+}
+
+.results-wrapper {
+  padding-top: 155px;
+}

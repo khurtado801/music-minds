@@ -3,6 +3,7 @@ import { Form, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import SearchList from '../components/SearchList';
+import Greetings from '../components/Greetings';
 import '../styles/index.css';
 
 class Search extends Component {
@@ -143,6 +144,7 @@ class Search extends Component {
         console.log('lastFmAlbums', lastFmAlbums)
         return (
             <div>
+            <Greetings />
                 <Form inline onSubmit={this.getBioLastFm}>
                     <FormGroup>
                         <ControlLabel><h3>Search by artist name or track name</h3></ControlLabel>
@@ -161,11 +163,21 @@ class Search extends Component {
                 </Form>
 
                 <div>
+
                     <div className="bio-wrapper">
                         <img className="bio-img" src={lastFmArtistImg} alt="" /> {/* Render artist image from API GET request */}
                         <h4 className="bio-txt">{bioResults}</h4> {/* Render artist bio from API GET request */}
                     </div>
-                    <div>
+                    {
+                        this.state.bioResults.length > 0 ?
+                            <div className="results-wrapper">
+                                <h3>Here are your results</h3>
+                            </div>
+                        :
+                            <div></div>
+
+                    }
+                    <div className="lastfm-albums">
                         { /* Response from LastFM GET request: Map through each album object one at a time and then return results to SearchList  */}
                         {lastFmAlbums.slice(0, lastFmAlbumsLimit).map((lastFmAlbum, i) => {
                             return <SearchList key={i} {...lastFmAlbum}></SearchList>;
@@ -179,7 +191,7 @@ class Search extends Component {
                                 <div></div>
                         }
                     </div>
-                    <div>
+                    <div className="lastfm-tracks">
                         { /* Response from LastFM GET request: Map through each track object one at a time and then return results to SearchList  */}
                         {lastFmTracks.slice(0, lastFmTracksLimit).map((lastFmTrack, i) => {
                             return <SearchList key={i} {...lastFmTrack} lastFmAlbumsLimit={lastFmAlbumsLimit} lastFmTracksLimit={lastFmTracksLimit}></SearchList>;

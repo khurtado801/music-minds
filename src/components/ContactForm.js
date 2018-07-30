@@ -6,7 +6,18 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { withStyles } from '@material-ui/core/styles';
 
+const styles = {
+    root: {
+        flexGrow: 1,
+        backgroundColor: '#6D6E70',
+        width: '100%',
+        fullScreen: true,
+        fullWidth: true,
+        maxWidth: 'md'
+    },
+}
 
 class ContactForm extends Component {
     state = {
@@ -25,7 +36,10 @@ class ContactForm extends Component {
         });
     };
 
+
+
 	render() {
+        
 		return (
 			<div>
                 <Button onClick={this.handleOpen} variant="outlined" color="primary"><h5>Click here to open form:</h5></Button>
@@ -33,6 +47,7 @@ class ContactForm extends Component {
                     open={this.state.open}
                     onClose={this.handleClose}
                     aria-labelledby="form-dialog-title"
+                    style={styles.root}
                 >
                     <DialogTitle id="form-dialog-title"><h3>Verification:</h3></DialogTitle>
                         <DialogContent>

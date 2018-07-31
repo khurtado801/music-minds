@@ -20,7 +20,8 @@ class Search extends Component {
             lastFmAlbums: [],
             lastFmTracks: [],
             lastFmArtist: [],
-            type: ''
+            type: '',
+            usrAmntRtn: ''
         };
     }
     
@@ -103,13 +104,15 @@ class Search extends Component {
      */
     clearInputs = () => {
         this.setState({ // Set state on this instance
-            userInput: '' // of variable to empty string
+            userInput: '', // of variable to empty string
+            usrAmntRtn: ''
         });
     };
 
     clearPage = () => {
-        this.setState({ // Set state on this instance
-            userInput: '', // of variable to empty string
+        this.setState({     // Set state on this instance
+            userInput: '',  // of variable to empty string
+            usrAmntRtn: '',
             bioResults: '',
             lastFmArtistImg: '',
             audioDbAlbums: [],
@@ -124,17 +127,29 @@ class Search extends Component {
      * and set to current target of the value of
      * userInput
      */
-    handleChange = (e) => {
+    handleTextChange = (e) => {
         let { value } = e.target; // Set variable to current value of event target
         this.setState(() => {
             /**
              * Clear previous state of arrays, then state of userInput to current value, return value of userInput for GET request
              */
             return {
-                audioDbAlbumsLimit: 5, lastFmAlbumsLimit: 5, lastFmTracksLimit: 5, audioDbAlbums: [], lastFmAlbums: [], lastFmTracks: [], lastFmArtist: [], userInput: value
+                audioDbAlbums: [], lastFmAlbums: [], lastFmTracks: [], lastFmArtist: [], userInput: value
             };
         });
     };
+
+    handleNumRtnChange = (e) => {
+        let { value } = e.target;
+        this.setState(() => {
+            /**
+             * Clear previous state of arrays, then state of userInput to current value, return value of userInput for GET request
+             */
+            return {
+                audioDbAlbumsLimit: value, lastFmAlbumsLimit: value, lastFmTracksLimit: value, 
+            }
+        })
+    }
 
     render() {
         console.log('this.state!!', this.state)
@@ -147,15 +162,36 @@ class Search extends Component {
             <Greetings />
                 <Form inline onSubmit={this.getBioLastFm}>
                     <FormGroup>
-                        <ControlLabel><h3>Search by artist name or track name</h3></ControlLabel>
+                        <ControlLabel><h3>Search by artist name or track name: </h3></ControlLabel>
                         {' '}
                         <FormControl 
                             type="text"
-                            placeholder="Search here"
+                            placeholder="Enter search term(s)"
                             name="artist"
-                            onChange={this.handleChange}
+                            onChange={this.handleTextChange}
                             value={userInput}
                         />
+                    </FormGroup>
+                    {' '}
+                    <FormGroup controlId="formControlsSelect">
+                        <ControlLabel><h3>Amount to return: </h3></ControlLabel>
+                        {' '}
+                        <FormControl
+                            componentClass="select"
+                            onChange={this.handleNumRtnChange}
+                            placeholder="select">
+                                <option value="select">select</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                        </FormControl>
                     </FormGroup>
                     {' '}
                     <Button variant="outlined" color="primary" type="submit">Submit</Button>

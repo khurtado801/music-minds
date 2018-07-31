@@ -6,18 +6,28 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
     root: {
         flexGrow: 1,
         backgroundColor: '#6D6E70',
-        width: '100%',
+        // width: '200',
         fullScreen: true,
         fullWidth: true,
         maxWidth: 'md'
     },
 }
+
+// const styles = theme => ({
+//   paper: {
+//     position: 'absolute',
+//     width: theme.spacing.unit * 125,
+//     height: theme.spacing.unit * 50,
+//     backgroundColor: theme.palette.background.paper,
+//     boxShadow: theme.shadows[5],
+//     padding: theme.spacing.unit * 4,
+//   },
+// });
 
 class ContactForm extends Component {
     state = {
@@ -35,8 +45,6 @@ class ContactForm extends Component {
             open: false,
         });
     };
-
-
 
 	render() {
         

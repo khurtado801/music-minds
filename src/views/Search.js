@@ -222,7 +222,7 @@ class Search extends Component {
                     <div>
                         {
                             this.state.lastFmAlbums.length > 0 ?
-                                <Button className="more-albums-button" variant="outlined" color="primary" onClick={() => this.setState({ lastFmAlbumsLimit: this.state.lastFmAlbumsLimit + 5 })}><h4>Load more results...</h4></Button>
+                                <Button className="more-albums-button" variant="outlined" color="primary" onClick={() => this.setState({ lastFmAlbumsLimit: this.state.lastFmAlbumsLimit + this.state.lastFmAlbumsLimit })}><h4>Load more results...</h4></Button>
                             :
                                 <div></div>
                         }
@@ -236,7 +236,7 @@ class Search extends Component {
                     <div>
                         {
                             this.state.lastFmTracks.length > 0 ?
-                                <Button className="more-albums-button" variant="outlined" color="primary" onClick={() => this.setState({ lastFmTracksLimit: this.state.lastFmTracksLimit + 5 })}><h4>Load more results...</h4></Button>
+                                <Button className="more-albums-button" variant="outlined" color="primary" onClick={() => this.setState({ lastFmTracksLimit: this.state.lastFmTracksLimit + this.state.lastFmTracksLimit })}><h4>Load more results...</h4></Button>
                             :
                                 <div></div>
                         }

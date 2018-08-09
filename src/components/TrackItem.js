@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import '../styles/index.css';
+import '../styles/track-item.css';
 
 class TrackItem extends Component {
     
 	render() {
 		let { strAlbum, name, artist } = this.props;
 		return (
-			<div className="search-item">
-				<div className="search-txt">
-					<h4>Artist Name: {artist}</h4>
-					<h4>Album Name: {strAlbum}</h4>
-					<h4>Track Name: {name}</h4>
+			<div className="track-wrapper">
+				<div className="track-item">
+					<div className="track-txt">
+						<h3>Artist Name: {artist}</h3>
+						<h3>Album Name: {strAlbum}</h3>
+						<h3>Track Name: {name}</h3>
+					</div>
 				</div>
 			</div>
 		);

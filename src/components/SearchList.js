@@ -1,11 +1,11 @@
+/* eslint-disable */
 import React from 'react';
 import AlbumItem from './AlbumItem';
 import TrackItem from './TrackItem';
 
-import '../styles/index.css';
+// import '../styles/index.css';
 
 function SearchList(props) {
-	console.log('props', props);
 	let {
 		strAlbum, name, artist, type, lastFmAlbumsLimit, lastFmTracksLimit
 	} = props;

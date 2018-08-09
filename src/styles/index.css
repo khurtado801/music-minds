@@ -19,7 +19,7 @@ html {
 h1, h2, h3, h4, h5, p, ul, li {
   font-family: Roboto;
 }
-h2, h3, h4, h5 {
+h2, h3, h4, h5, p {
   font-weight: normal;
   color: #000;
   margin: 0;
@@ -59,13 +59,11 @@ ul.header li a {
 ol, ul {
   margin-bottom: 0;
 }
-
 .component-wrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
-
 .bio-txt {
   color: black;
   width: 100%;
@@ -76,59 +74,52 @@ ol, ul {
   animation-duration: 1s;
   /* font-size: 14px; */
 }
-
 .more-albums-button {
   cursor: pointer;
   font-style: italic;
   padding: 10px;
 }
-
 .more-tracks-button {
   cursor: pointer;
   font-style: italic;
   padding: 10px;
 }
-
-.search-item {
-  display: flex;
-  align-items: center;
-  justify-items: center;
-  margin: 10px;
-  padding: 5px;
-}
-
-.search-txt {
-  display: inline-block;
-  text-align: left;
-  padding-right: 10px;
-  width: 400px;
-  animation-name: fade-in;
-  animation-duration: 1s;
-}
-
 .bio-img {
   float: left;
   margin: 10px;
 }
-
 .bio-wrapper {
   margin: 5%;
 }
-
 .lastfm-albums {
   margin-left: 5%;
+  width: 100%;
 }
-
 .lastfm-tracks {
   margin-left: 5%;
 }
-
 .jumbotron {
   border: 2px solid;
   border-radius: 10px;
   border-color: rgb(225, 228, 232)
 }
-
 .results-wrapper {
   padding-top: 155px;
+}
+.flex-container {
+  padding: 1.5em;
+  margin: 0;
+  list-style: none;
+  align-items: left;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+}
+.wrap {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
 }

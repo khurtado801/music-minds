@@ -146,7 +146,7 @@ class Search extends Component {
              * Clear previous state of arrays, then state of userInput to current value, return value of userInput for GET request
              */
             return {
-                audioDbAlbumsLimit: value, lastFmAlbumsLimit: value, lastFmTracksLimit: value, 
+                audioDbAlbumsLimit: value, lastFmAlbumsLimit: value, lastFmTracksLimit: value,
             }
         })
     }
@@ -154,7 +154,7 @@ class Search extends Component {
     render() {
         console.log('this.state!!', this.state)
         let {
-            userInput, bioResults, lastFmArtistImg, audioDbAlbums, lastFmAlbums, lastFmTracks, audioDbAlbumsLimit, lastFmAlbumsLimit, lastFmTracksLimit
+            userInput, bioResults, lastFmArtistImg, lastFmAlbums, lastFmTracks, lastFmAlbumsLimit, lastFmTracksLimit
         } = this.state; // Destruct state
         console.log('lastFmAlbums', lastFmAlbums)
         return (
@@ -213,7 +213,7 @@ class Search extends Component {
                             <div></div>
 
                     }
-                    <div className="lastfm-albums">
+                    <div className="lastfm-albums flex-container wrap">
                         { /* Response from LastFM GET request: Map through each album object one at a time and then return results to SearchList  */}
                         {lastFmAlbums.slice(0, lastFmAlbumsLimit).map((lastFmAlbum, i) => {
                             return <SearchList key={i} {...lastFmAlbum}></SearchList>;
@@ -227,7 +227,7 @@ class Search extends Component {
                                 <div></div>
                         }
                     </div>
-                    <div className="lastfm-tracks">
+                    <div className="lastfm-tracks flex-container wrap">
                         { /* Response from LastFM GET request: Map through each track object one at a time and then return results to SearchList  */}
                         {lastFmTracks.slice(0, lastFmTracksLimit).map((lastFmTrack, i) => {
                             return <SearchList key={i} {...lastFmTrack} lastFmAlbumsLimit={lastFmAlbumsLimit} lastFmTracksLimit={lastFmTracksLimit}></SearchList>;

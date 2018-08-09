@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import '../styles/index.css';
+import '../styles/album-item.css';
 
 class AlbumItem extends Component {
     
 	render() {
 		let { strAlbum } = this.props;
 		return (
-			<div className="search-wrapper">
+			<div className="strAlbum-wrapper">
 				<div className="search-item">
 					<div className="search-txt">
-						<h4>Album Name: {strAlbum} </h4>
+						<h3>Album name: {strAlbum}</h3>
 					</div>
 				</div>
 			</div>

@@ -4,13 +4,14 @@ import '../styles/album-item.css';
 class AlbumItem extends Component {
     
 	render() {
-		let { strAlbum } = this.props;
+		let { strAlbum, albumImg } = this.props;
 		return (
-			<div className="strAlbum-wrapper">
-				<div className="search-item">
-					<div className="search-txt">
-						<h3>Album name: {strAlbum}</h3>
-					</div>
+			<div className="figure">
+				<div className="album-img">
+					<img className="coverart" src={albumImg} alt="" />
+				</div>
+				<div className="figcaption">
+					<h4>Album name: {strAlbum}</h4>
 				</div>
 			</div>
 		);

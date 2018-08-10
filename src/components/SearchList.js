@@ -5,12 +5,16 @@ import TrackItem from './TrackItem';
 
 function SearchList(props) {
 	let {
-		strAlbum, name, artist, type, lastFmAlbumsLimit, lastFmTracksLimit
+		strAlbum, image, name, artist, type, lastFmAlbumsLimit, lastFmTracksLimit
 	} = props;
-    
+
+	var albumImg = image[3]['#text']
+
+    console.log('SearchListStrAlbum', name);
 	if (type === 'album') {
 		return (
 			<AlbumItem
+				albumImg={albumImg}
 				strAlbum={strAlbum ? strAlbum : name}
 				lastFmAlbumsLimit={lastFmAlbumsLimit}
 			/>

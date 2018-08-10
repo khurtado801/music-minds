@@ -16,6 +16,7 @@ class Search extends Component {
             bioResults: '',
             userInput: '',
             lastFmArtistImg: '',
+            lastFmAlbumImg: '',
             audioDbAlbums: [],
             lastFmAlbums: [],
             lastFmTracks: [],
@@ -109,6 +110,7 @@ class Search extends Component {
             usrAmntRtn: '',
             bioResults: '',
             lastFmArtistImg: '',
+            lastFmAlbumImg: '',
             audioDbAlbums: [],
             lastFmAlbums: [],
             lastFmTracks: [],
@@ -146,7 +148,6 @@ class Search extends Component {
     }
 
     render() {
-        console.log('this.state!!', this.state)
         let {
             userInput, bioResults, lastFmArtistImg, lastFmAlbums, lastFmTracks, lastFmAlbumsLimit, lastFmTracksLimit
         } = this.state; // Destruct state

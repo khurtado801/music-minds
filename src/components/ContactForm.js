@@ -11,23 +11,11 @@ const styles = {
     root: {
         flexGrow: 1,
         backgroundColor: '#6D6E70',
-        // width: '200',
         fullScreen: true,
         fullWidth: true,
         maxWidth: 'md'
     },
 }
-
-// const styles = theme => ({
-//   paper: {
-//     position: 'absolute',
-//     width: theme.spacing.unit * 125,
-//     height: theme.spacing.unit * 50,
-//     backgroundColor: theme.palette.background.paper,
-//     boxShadow: theme.shadows[5],
-//     padding: theme.spacing.unit * 4,
-//   },
-// });
 
 class ContactForm extends Component {
     state = {
@@ -47,7 +35,6 @@ class ContactForm extends Component {
     };
 
 	render() {
-        
 		return (
 			<div>
                 <Button onClick={this.handleOpen} variant="outlined" color="primary"><h5>Click here to open form:</h5></Button>

@@ -44,12 +44,6 @@ class Search extends Component {
             })
             .catch((err) => console.error(err));
 
-        /**
-        * GET request to theaudioDB API:
-        * Query by artist name returns artist's album names
-        */
-
-
             /**
             * GET request to lastFM API:
             * Query by artist name returns artist's album names

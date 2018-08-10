@@ -1,5 +1,5 @@
 .strAlbum-wrapper {
-    width: 33%;
+    width: 50%;
 }
 .search-item {
     width: 100%;
@@ -8,8 +8,8 @@
 }
 .search-txt {
     justify-items: center;
-    text-align: center;
-    /* padding-right: 10px;
-    animation-name: fade-in;
-    animation-duration: 1s; */
+    text-align: left;
+  }
+  h3 {
+      font-size: 1.4em;
   }

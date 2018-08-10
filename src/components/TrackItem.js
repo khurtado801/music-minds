@@ -9,9 +9,9 @@ class TrackItem extends Component {
 			<div className="track-wrapper">
 				<div className="track-item">
 					<div className="track-txt">
-						<h3>Artist Name: {artist}</h3>
-						<h3>Album Name: {strAlbum}</h3>
-						<h3>Track Name: {name}</h3>
+						<h4>Artist Name: {artist}</h4>
+						<h4>Album Name: {strAlbum}</h4>
+						<h4>Track Name: {name}</h4>
 					</div>
 				</div>
 			</div>

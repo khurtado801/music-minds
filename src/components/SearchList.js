@@ -3,8 +3,6 @@ import React from 'react';
 import AlbumItem from './AlbumItem';
 import TrackItem from './TrackItem';
 
-// import '../styles/index.css';
-
 function SearchList(props) {
 	let {
 		strAlbum, name, artist, type, lastFmAlbumsLimit, lastFmTracksLimit

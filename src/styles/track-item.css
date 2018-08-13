@@ -1,5 +1,5 @@
 .track-wrapper {
-    width: 33%;
+    width: 100%;
 }
 .track-item {
     width: 100%;
@@ -13,3 +13,52 @@
   h4 {
     font-size: 1.3em;
 }
+
+/**********/
+.track-item {
+    margin: 3.5em;
+    margin-bottom: 7%;
+    float: left;
+    height: 20em;
+    width: 25em;
+    -webkit-transform: perspective(500);
+    transform: perspective(500);
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+.figure:hover {
+    -webkit-transform: perspective(500) rotateX(90deg) translateY(-3em) translateZ(3em);
+    transform: perspective(500) rotateX(90deg) translateY(-3em) translateZ(3em);
+}
+.track-img{
+    background-color: rgba(233, 231, 231, 0.92);
+    box-shadow: 0 20px 15px -10px rgba(245, 244, 244, 0);
+    display: block;
+    height: 100%;
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+.coverart {
+    width: 90%;
+}
+.figure:hover .track-img {
+    box-shadow: none;
+}
+.figcaption {
+    font-size: .8em;
+    background-color: rgba(181, 176, 176, 0.461);
+    color: #fff;
+    padding: 1.5em;
+    -webkit-transform: rotateX(-90deg);
+    transform: rotateX(-90deg);
+    -webkit-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+.figcaption:hover figcaption {
+    box-shadow: 0 20px 15px -10px hsla(0,0%,0%,.25);
+}
+

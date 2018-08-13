@@ -4,14 +4,14 @@ import AlbumItem from './AlbumItem';
 import TrackItem from './TrackItem';
 
 function SearchList(props) {
-	let {
-		strAlbum, image, name, artist, type, lastFmAlbumsLimit, lastFmTracksLimit
-	} = props;
+	let { type } = props;
 
-	var albumImg = image[3]['#text']
-
-    console.log('SearchListStrAlbum', name);
 	if (type === 'album') {
+		let {
+			strAlbum, image, name, lastFmAlbumsLimit
+		} = props;
+
+		var albumImg = image[3]['#text']
 		return (
 			<AlbumItem
 				albumImg={albumImg}
@@ -20,9 +20,16 @@ function SearchList(props) {
 			/>
 		);
 	}
+
 	if (type === 'track') {
+		let {
+			strAlbum, image, name, artist, lastFmTracksLimit
+		} = props;
+
+		var trackImg = image[3]['#text']
 		return (
 			<TrackItem
+				trackImg={trackImg}
 				name={name}
 				artist={artist}
 				strAlbum={strAlbum}

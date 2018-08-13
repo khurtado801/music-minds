@@ -25,7 +25,7 @@ class Search extends Component {
             usrAmntRtn: ''
         };
     }
-    
+
     /**
      * GET request to lastFM API:
      * Query by artist name returns artist bio and artist image
@@ -105,8 +105,12 @@ class Search extends Component {
     };
 
     clearPage = () => {
-        this.setState({     // Set state on this instance
-            userInput: '',  // of variable to empty string
+        /**
+         * Set state on this instance of
+         * variables to an empty strin
+         */
+        this.setState({
+            userInput: '',
             usrAmntRtn: '',
             bioResults: '',
             lastFmArtistImg: '',
@@ -136,7 +140,7 @@ class Search extends Component {
     };
 
     handleNumRtnChange = (e) => {
-        let { value } = e.target;
+        let { value } = e.target; // Destructure event target value into value variable
         this.setState(() => {
             /**
              * Clear previous state of arrays, then state of userInput to current value, return value of userInput for GET request

@@ -6,11 +6,15 @@
     height: 20em;
     width: 25em;
     -webkit-transform: perspective(500);
+    transform: perspective(500);
     -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
     -webkit-transition: .5s;
+    transition: .5s;
 }
 .figure:hover {
     -webkit-transform: perspective(500) rotateX(90deg) translateY(-3em) translateZ(3em);
+    transform: perspective(500) rotateX(90deg) translateY(-3em) translateZ(3em);
 }
 img {
     background-color: #222;
@@ -18,6 +22,7 @@ img {
     display: block;
     height: 100%;
     -webkit-transition: .5s;
+    transition: .5s;
 }
 .coverart {
     width: 90%;
@@ -31,8 +36,11 @@ img {
     color: #fff;
     padding: 1.5em;
     -webkit-transform: rotateX(-90deg);
+    transform: rotateX(-90deg);
     -webkit-transform-origin: 100% 0;
+    transform-origin: 100% 0;
     -webkit-transition: .5s;
+    transition: .5s;
 }
 .figcaption:hover figcaption {
     box-shadow: 0 20px 15px -10px hsla(0,0%,0%,.25);

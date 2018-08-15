@@ -18,6 +18,8 @@ class Search extends Component {
             lastFmArtistImg: '',
             lastFmAlbumImg: '',
             lastFmTrackImg: '',
+            songKickArtistId: '',
+            songKickTourUntil: '',
             audioDbAlbums: [],
             lastFmAlbums: [],
             lastFmTracks: [],
@@ -91,8 +93,23 @@ class Search extends Component {
                .then((res) => {
                    console.log('SongKick Artist ID :', res.data.resultsPage.results.artist[0].id);
                    console.log('SongKick On Tour Status :', res.data.resultsPage.results.artist[0].onTourUntil);
+                   this.setState({
+                       songKickArtistId: res.data.resultsPage.results.artist[0].id, // Set variable to artistID
+                       songKickTourStatus: res.data.resultsPage.results.artist[0].onTourUntil // Set variable to date tour ends
+                    });
                 })
                 .catch((err) => console.error('Err3: ', err));
+
+                /**
+                 * GET request to SongKick
+                 * Query by SongKick ID returns touring info
+                 */
+                axios.get(`https://api.songkick.com/api/3.0/artists/{this.state.songKickArtistId}/calendar.json?apikey=EasSil2s2rpezUZr`)
+                .then((result) => {
+                    // let tempRes = res.data.resultsPage.results.event[0].id;
+                    console.log('tempRes',result.data.resultsPage.results.event)
+                })
+                .catch((err) => console.error('Err6: ', err));
     }
 
     /**
@@ -117,6 +134,8 @@ class Search extends Component {
             lastFmArtistImg: '',
             lastFmAlbumImg: '',
             lastFmTrackImg: '',
+            songKickArtistId: '',
+            songKickTourStatus: '',
             audioDbAlbums: [],
             lastFmAlbums: [],
             lastFmTracks: [],

@@ -18,6 +18,8 @@ class Search extends Component {
             lastFmArtistImg: '',
             lastFmAlbumImg: '',
             lastFmTrackImg: '',
+            songKickArtistId: '',
+            songKickTourInfo: [],
             audioDbAlbums: [],
             lastFmAlbums: [],
             lastFmTracks: [],
@@ -44,7 +46,7 @@ class Search extends Component {
                 this.getAlbumsAudioDb();
                 this.clearInputs(); // clear input fields
             })
-            .catch((err) => console.error(err));
+            .catch((err) => console.error('AudioScrobbler Artist Bio Results Error: ', err));
 
             /**
             * GET request to lastFM API:
@@ -62,7 +64,7 @@ class Search extends Component {
                     });
                     this.clearInputs(); // clear input fields
                 })
-                .catch((err) => console.error('Err2: ', err));
+                .catch((err) => console.error('AudioScrobbler Album Results Error: ', err));
 
                 /**
                 * GET request to LastFM API:
@@ -72,15 +74,17 @@ class Search extends Component {
                .then((res) => {
                    let lastFmTracksRes = res.data.results.trackmatches.track; // Declare variable and set to response of array of track objects
                    this.data = res.data.results.trackmatches.track; // Set this instance of data to array of track objects from response
+                   
                    this.data.forEach((item) => { // For each track object item
                         item.type = 'track'; // add property named type and set value to track
                     });
+                    
                     this.setState({
                         lastFmTracks: lastFmTracksRes // Set array state to array of track objects from response
                     });
                     this.clearInputs(); // clear input fields
                 })
-                .catch((err) => console.error('Err5: ', err));
+                .catch((err) => console.error('AudioScrobbler Track Results Error: ', err));
 
                 /**
                 * GET request to SongKick
@@ -89,10 +93,13 @@ class Search extends Component {
                 */
                axios.get(`https://api.songkick.com/api/3.0/search/artists.json?apikey=EasSil2s2rpezUZr&query=${userInput}&page=1`)
                .then((res) => {
-                   console.log('SongKick Artist ID :', res.data.resultsPage.results.artist[0].id);
-                   console.log('SongKick On Tour Status :', res.data.resultsPage.results.artist[0].onTourUntil);
+                   let songKickArtistIdRes = res.data.resultsPage.results.artist[0].id; // Declare variable and set to response artist ID
+                   this.setState({
+                       songKickArtistId: songKickArtistIdRes // Set variable state to artist object ID attribute
+                   });
+                   this.getTourInfo(songKickArtistIdRes); // Call to getTourInfo passing artist ID from SongKick
                 })
-                .catch((err) => console.error('Err3: ', err));
+                .catch((err) => console.error('SongKick Artist ID Results Error: ', err));
     }
 
     /**
@@ -117,6 +124,8 @@ class Search extends Component {
             lastFmArtistImg: '',
             lastFmAlbumImg: '',
             lastFmTrackImg: '',
+            songKickArtistId: '',
+            songKickTourInfo: [],
             audioDbAlbums: [],
             lastFmAlbums: [],
             lastFmTracks: [],
@@ -136,7 +145,7 @@ class Search extends Component {
              * Clear previous state of arrays, then state of userInput to current value, return value of userInput for GET request
              */
             return {
-                audioDbAlbums: [], lastFmAlbums: [], lastFmTracks: [], lastFmArtist: [], userInput: value
+                audioDbAlbums: [], lastFmAlbums: [], lastFmTracks: [], lastFmArtist: [], songKickTourInfo: [], userInput: value
             };
         });
     };
@@ -153,9 +162,39 @@ class Search extends Component {
         })
     }
 
+    getTourInfo = (artistId) => {
+        /**
+        * GET request to SongKick
+        * Query by SongKick Artist ID returns artist touring info
+        */
+        axios.get(`https://api.songkick.com/api/3.0/artists/${artistId}/calendar.json?apikey=EasSil2s2rpezUZr`)
+        .then((res) => {
+            let status = res.data.resultsPage.status;
+            let tourInfo = res.data.resultsPage.results.event; // Declare variable and set to response of array of tour objects
+            this.data = res.data.resultsPage.results.event; // Set this instance of data to array of track objects from response
+            
+            this.data.forEach((item) => { // For each tour object item
+                item.type = 'tourInfo'; // add property named type and set value to tourInfo
+            });
+
+            this.setState({
+                songKickTourInfo: tourInfo // Set array state to array of tour objects from response
+            })
+            
+            {
+                res.data.resultsPage.status === 'ok' ?
+                    console.log('status:',status ,', Artist ID:',artistId)
+                :
+                    console.log('No tour info available...')
+            }
+            console.log('songKickTourInfo state:', this.state.songKickTourInfo);
+        })
+        .catch((err) => console.error('SongKick Touring Results Error: ', err));
+    }
+
     render() {
         let {
-            userInput, bioResults, lastFmArtistImg, lastFmAlbums, lastFmTracks, lastFmAlbumsLimit, lastFmTracksLimit
+            userInput, bioResults, lastFmArtistImg, lastFmAlbums, lastFmTracks, lastFmAlbumsLimit, lastFmTracksLimit, songKickTourInfo
         } = this.state; // Destruct state
         return (
             <div>

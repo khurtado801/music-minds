@@ -38,14 +38,6 @@ function SearchList(props) {
 			/>
 		);
 	}
-
-	// if (type === 'tourInfo') {
-	// 	let { tour } = props;
-
-	// 	return (
-	// 		console.log('Tour Info:', tour)
-	// 	)
-	// }
 }
 
 export default SearchList;

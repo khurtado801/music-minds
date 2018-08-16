@@ -4,6 +4,7 @@ import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import SearchList from '../components/SearchList';
 import Greetings from '../components/Greetings';
+import TourInfo from '../components/TourInfo';
 import '../styles/index.css';
 
 class Search extends Component {
@@ -19,7 +20,7 @@ class Search extends Component {
             lastFmAlbumImg: '',
             lastFmTrackImg: '',
             songKickArtistId: '',
-            songKickTourInfo: [],
+            tourDetails: [],
             audioDbAlbums: [],
             lastFmAlbums: [],
             lastFmTracks: [],
@@ -125,7 +126,7 @@ class Search extends Component {
             lastFmAlbumImg: '',
             lastFmTrackImg: '',
             songKickArtistId: '',
-            songKickTourInfo: [],
+            tourDetails: [],
             audioDbAlbums: [],
             lastFmAlbums: [],
             lastFmTracks: [],
@@ -145,7 +146,7 @@ class Search extends Component {
              * Clear previous state of arrays, then state of userInput to current value, return value of userInput for GET request
              */
             return {
-                audioDbAlbums: [], lastFmAlbums: [], lastFmTracks: [], lastFmArtist: [], songKickTourInfo: [], userInput: value
+                audioDbAlbums: [], lastFmAlbums: [], lastFmTracks: [], lastFmArtist: [], tourDetails: [], userInput: value
             };
         });
     };
@@ -178,7 +179,7 @@ class Search extends Component {
             });
 
             this.setState({
-                songKickTourInfo: tourInfo // Set array state to array of tour objects from response
+                tourDetails: tourInfo // Set array state to array of tour objects from response
             })
             
             {
@@ -187,15 +188,15 @@ class Search extends Component {
                 :
                     console.log('No tour info available...')
             }
-            console.log('songKickTourInfo state:', this.state.songKickTourInfo);
         })
         .catch((err) => console.error('SongKick Touring Results Error: ', err));
     }
 
     render() {
         let {
-            userInput, bioResults, lastFmArtistImg, lastFmAlbums, lastFmTracks, lastFmAlbumsLimit, lastFmTracksLimit, songKickTourInfo
+            userInput, bioResults, lastFmArtistImg, lastFmAlbums, lastFmTracks, lastFmAlbumsLimit, lastFmTracksLimit, tourDetails
         } = this.state; // Destruct state
+        console.log('Destrcuted State Variables:', tourDetails)
         return (
             <div>
             <Greetings />
@@ -279,6 +280,13 @@ class Search extends Component {
                             :
                                 <div></div>
                         }
+                    </div>
+                    <div>
+                        {tourDetails.map((tourDetail, i) => {
+                            return (
+                                <TourInfo key={i}{...tourDetail}></TourInfo>
+                            )
+                        })}
                     </div>
                 </div>
             </div>

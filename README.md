@@ -4,11 +4,13 @@ Goal:
 This app will utilize the API for LastFM to enable the user to search for musical artist info.
 
 The user will be able to perform the following queries:
-Return Artist details from artist name. Return all album details from artist name. Return single album details from artist + album name. Return single album details from album name Return track details from artist/track name Return Discography for an Artist with Album names and year only.
+Return artist bio and album details from artist name. Return album and artist details from song name. Display tour status and name frpm artist name.
 
 Technologies Used:
 React,
-Axios
+Axios,
+Matrial-UI,
+ReactStrap
 
 Bootstrapped:
 Using create-react-app

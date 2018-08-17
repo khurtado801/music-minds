@@ -281,8 +281,13 @@ class Search extends Component {
                                 <div></div>
                         }
                     </div>
-                    <div>
-                        <h4>Any available tour information will be displayed here:</h4>
+                    <div className="tour-info-txt">
+                        {
+                            this.state.tourDetails.length > 0 ?
+                                <h3>Tour Info:</h3>
+                            :
+                                <div></div>
+                        }
                             {tourDetails.map((tourDetail, i) => {
                                 return (
                                     <TourInfo key={i}{...tourDetail}></TourInfo>

@@ -129,3 +129,6 @@ ol, ul {
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
 }
+.tour-info-txt{
+  margin: 5.5em;
+}

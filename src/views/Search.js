@@ -282,11 +282,12 @@ class Search extends Component {
                         }
                     </div>
                     <div>
-                        {tourDetails.map((tourDetail, i) => {
-                            return (
-                                <TourInfo key={i}{...tourDetail}></TourInfo>
-                            )
-                        })}
+                        <h4>Any available tour information will be displayed here:</h4>
+                            {tourDetails.map((tourDetail, i) => {
+                                return (
+                                    <TourInfo key={i}{...tourDetail}></TourInfo>
+                                )
+                            })}
                     </div>
                 </div>
             </div>

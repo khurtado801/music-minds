@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
+import '../styles/tour-info.css';
 
 class TourInfo extends Component {
     
 	render() {
-		let { displayName, location } = this.props;
-		console.log('displayName:', displayName, 'location', location);
+		let { displayName } = this.props;
 		return (
-			<div>
-				<p>Tour Info: {displayName}</p>
+			<div className="tour-wrapper">
+				<div className="tour-txt">
+					<h4>Tour Info: {displayName}</h4>
+				</div>
 			</div>
 		);
 	}
